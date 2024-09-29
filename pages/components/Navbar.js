@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav className="bg-[#4A4A8A] p-4 font-oswald">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-lg font-bold">MyApp</div>
+        <div className="text-white text-lg font-bold">Heatmap</div>
         {session ? (
           <div className="flex items-center">
             <span className="text-white mr-4">Welcome, {session.user.name}!</span>

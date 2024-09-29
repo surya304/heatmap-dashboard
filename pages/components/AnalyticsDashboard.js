@@ -25,7 +25,8 @@ const AnalyticsDashboard = () => {
   };
 
   return (
-    <div className="analytics-dashboard p-6 bg-gray-100 min-h-screen text-black">
+  <div className="w-[70%] mx-auto bg-gray-100"> 
+    <div className="analytics-dashboard p-6  min-h-screen text-black ">
       <h1 className="text-2xl font-bold mb-4">Analytics Dashboard</h1>
       {error && <p className="error text-red-500">{error}</p>}
       <div className="filters mb-4 space-y-4">
@@ -86,6 +87,8 @@ const AnalyticsDashboard = () => {
         ))}
       </div>
     </div>
+    </div>
+
   );
 };
 
