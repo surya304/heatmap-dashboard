@@ -50,7 +50,17 @@ const AboutUs = () => {
     .size([width, height])
     .bandwidth(20) // Adjust bandwidth for smoother or more detailed contours
     (data);
-  
+    // Create a tooltip element
+    const tooltip = d3.select(heatmapContainerRef.current)
+      .append('div')
+      .style('position', 'absolute')
+      .style('background', 'rgba(0, 0, 0, 0.7)')
+      .style('color', 'white')
+      .style('padding', '5px 10px')
+      .style('border-radius', '4px')
+      .style('pointer-events', 'none')
+      .style('opacity', 0)
+      .text('hello');
   // Append density contours to the SVG
   svg.selectAll('path')
     .data(densityData)
@@ -58,8 +68,18 @@ const AboutUs = () => {
     .attr('d', d3.geoPath())
     .attr('fill', d => colorScale(d.value))
     .attr('stroke', 'none')
-    .attr('opacity', 0.2); // Adjust opacity for better visualization
-
+    .attr('opacity', 0.2) // Adjust opacity for better visualization
+    .on('mouseover', function (event) {
+        tooltip.style('opacity', 1);
+      })
+      .on('mousemove', function (event) {
+        tooltip
+          .style('left', (event.pageX + 10) + 'px')
+          .style('top', (event.pageY - 10) + 'px');
+      })
+      .on('mouseout', function () {
+        tooltip.style('opacity', 0);
+      });
   }, []);
 
 
