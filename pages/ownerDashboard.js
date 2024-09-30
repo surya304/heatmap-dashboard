@@ -47,7 +47,7 @@ export default function OwnerDashboard() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar /> {/* Add the Navbar component */}
-      <div className="container mx-auto flex flex-col justify-center items-center flex-grow bg-[#F3F4F6] font-oswald">
+      <div className="container mx-auto flex flex-col justify-center items-center flex-grow bg-[#F3F4F6]">
         <div className="w-4/5 bg-white p-6 rounded-lg shadow-xl">
           <h1 className="text-2xl font-bold mb-4 text-black">Owner Dashboard</h1>
           {error && <p className="text-red-500 mb-4">{error}</p>}

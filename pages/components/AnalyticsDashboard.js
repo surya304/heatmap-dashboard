@@ -25,68 +25,31 @@ const AnalyticsDashboard = () => {
   };
 
   return (
-  <div className="w-[70%] mx-auto bg-gray-100"> 
-    <div className="analytics-dashboard p-6  min-h-screen text-black ">
-      <h1 className="text-2xl font-bold mb-4">Analytics Dashboard</h1>
+  <div className=" bg-gray-100 shadow-lg"> 
+    <div className="analytics-dashboard  text-black ">
       {error && <p className="error text-red-500">{error}</p>}
       <div className="filters mb-4 space-y-4">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 p-4 bg-white">
           <label className="block mb-2 flex-1">
             Time Period:
             <select
               value={timePeriod}
               onChange={(e) => setTimePeriod(e.target.value)}
-              className="block w-full mt-1 p-2 rounded shadow-lg"
+              className="block w-full mt-1 p-2 rounded " style={{'border': '1px solid lightgray'}}
             >
               <option value="lastDay">Last Day</option>
               <option value="lastWeek">Last Week</option>
               <option value="lastMonth">Last Month</option>
             </select>
           </label>
-          <label className="block mb-2 flex-1">
-            Page:
-            <select
-              value={page}
-              onChange={(e) => setPage(e.target.value)}
-              className="block w-full mt-1 p-2 rounded shadow-lg"
-            >
-              <option value="/">Home</option>
-              <option value="/about">About</option>
-              <option value="/contact">Contact</option>
-            </select>
-          </label>
+       
         </div>
-        <div className="flex space-x-4">
-          <label className="block mb-2 flex-1">
-            Start Date:
-            <input
-              type="date"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className="block w-full mt-1 p-2 rounded shadow-lg"
-            />
-          </label>
-          <label className="block mb-2 flex-1">
-            End Date:
-            <input
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              className="block w-full mt-1 p-2 rounded shadow-lg"
-            />
-          </label>
-        </div>
+    
       </div>
-      <div className="analytics-data bg-white p-4 rounded shadow">
-        {analyticsData.map((data, index) => (
-          <div key={index} className="mb-2">
-            <p className="text-lg">
-              <span className="font-semibold">{data.metric}:</span> {data.value}
-            </p>
-          </div>
-        ))}
-      </div>
+   
     </div>
+
+    
     </div>
 
   );
