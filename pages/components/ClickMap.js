@@ -27,6 +27,8 @@ const ClickMap = () => {
 
     const heatmapArr=[];
 
+    console.log('heatmaparr', heatmapArr);
+
     // Event listener for clicks
     const handleClick = (event) => {
       const x = event.clientX - heatmapContainer.getBoundingClientRect().left;
