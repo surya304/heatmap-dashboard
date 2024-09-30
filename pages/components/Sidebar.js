@@ -1,64 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-const Sidebar = () => {
+const Sidebar = ({ onSubmit }) => {
   const router = useRouter();
-  const buttonclass ='bg-white text-purple-500 border border-purple-500 px-4 py-2 rounded mr-4 hover:bg-purple-500 hover:text-white w-full';
+  const [selectedPage, setSelectedPage] = useState('');
+  const [selectedMapType, setSelectedMapType] = useState('scroll');
+
+  const handleSubmit = () => {
+    onSubmit({ selectedPage, selectedMapType });
+  };
 
   return (
-    <div className="w-64 h-[100vh] bg-white shadow-lg" style={{'borderRight': '1px solid lightgray'}}>
-      <ul className="list-none p-4">
-        <li className="mb-4 text-black group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
-ALL pages
+    <div className="w-64 h-[100vh] bg-white shadow-lg text-black" style={{'borderRight': '1px solid lightgray'}}>
+    
 
-</li>   
-        <li className="mb-4">
-          <button
-            onClick={() => router.push('/aboutus')}
-            className="text-black group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+        <div className="p-4">
+          <h2 className="text-lg font-semibold text-black">Select Page</h2>
+          <select
+            value={selectedPage}
+            onChange={(e) => setSelectedPage(e.target.value)}
+            className="block w-full mt-1 p-2 rounded border border-gray-300"
           >
-            About Us
-          </button>
-        </li>
-        <li className="mb-4 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
-          <button
-            onClick={() => router.push('/contactus')}
-            className="text-black "
-          >
-            Contact Us
-          </button>
-        </li>
-        <li className="mb-4 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
-          <button
-            onClick={() => router.push('/services')}
-            className="text-black "
-          >
-            Services
-          </button>
-        </li>
-        <li className="mb-4 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
-          <button
-            onClick={() => router.push('/faq')}
-            className="text-black "
-          >
-            FAQ
-          </button>
-        </li>
-      </ul>
+            <option value="">Select a page</option>
+            <option value="aboutus">About Us</option>
+            <option value="contactus">Contact Us</option>
+          </select>
 
-      <h2 className="text-lg font-semibold p-4 text-black">Map Types</h2>
-      <ul className="list-none p-4">
-        <li className="mb-4">
-          <button className={buttonclass}>
-            ALL Clicks
+          <h2 className="text-lg font-semibold text-black mt-4">Map Types</h2>
+          <ul className="list-none p-4">
+            <li className="mb-4">
+              <input
+                type="radio"
+                id="allClicks"
+                name="clickOptions"
+                value="allClicks"
+                checked={selectedMapType === 'allClicks'}
+                onChange={(e) => setSelectedMapType(e.target.value)}
+                className="form-radio h-4 w-4 text-blue-600"
+              />
+              <label htmlFor="allClicks" className="ml-2 text-gray-700">ALL Clicks</label>
+            </li>
+            <li className="mb-4">
+              <input
+                type="radio"
+                id="scroll"
+                name="clickOptions"
+                value="scroll"
+                checked={selectedMapType === 'scroll'}
+                onChange={(e) => setSelectedMapType(e.target.value)}
+                className="form-radio h-4 w-4 text-blue-600"
+              />
+              <label htmlFor="scroll" className="ml-2 text-gray-700">Scroll</label>
+            </li>
+          </ul>
+
+          <button
+            onClick={handleSubmit}
+            className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+          >
+            Submit
           </button>
-        </li>
-        <li className="mb-4">
-          <button className={buttonclass}>
-            Scroll 
-          </button>
-        </li>
-      </ul>
+        </div>
     </div>
   );
 };

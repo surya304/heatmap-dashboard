@@ -1,54 +1,39 @@
-import React, { useEffect, useRef } from 'react';
-import h337 from 'heatmap.js';
+import React,{useEffect,useRef,useState} from 'react';
+import { addVisualization } from '../utils';
 
-const ClickMap = () => {
-  const heatmapContainerRef = useRef(null);
-  const heatmapInstanceRef = useRef(null);
+const Contact = ({ selectedMapType }) => {
+    const heatmapContainerRef = useRef(null);
+    const [style, setStyle] = useState({});
+  
+    useEffect(() => {
+      if (selectedMapType === 'scroll') {
+        const finalData={};
+        addVisualization(heatmapContainerRef, 'rectangle',finalData);
 
-  useEffect(() => {
-    const heatmapContainer = heatmapContainerRef.current;
+        setStyle({ position: 'relative' });
 
-    // Initialize heatmap instance
-    const heatmapInstance = h337.create({
-      container: heatmapContainer,
-      radius: 40,
-      maxOpacity: 0.6,
-      minOpacity: 0,
-      blur: 0.9,
-      gradient: {
-        0.4: 'blue',
-        0.6: 'green',
-        0.7: 'yellow',
-        0.8: 'orange',
-        1.0: 'red',
-      },
-    });
-
-    // Set the heatmap instance reference
-    heatmapInstanceRef.current = heatmapInstance;
-
-    // Define the data
-    const data = {
-      max: 1,
-      data: [
-        { x: 564, y: 292.8, value: 1 },
-        { x: 479, y: 431.6, value: 1 },
-        { x: 445, y: 226.6, value: 1 },
-        { x: 460, y: 139.6, value: 1 },
-        { x: 156, y: 210.6, value: 1 },
-      ],
-    };
-
-    // Set data to the heatmap instance
-    heatmapInstance.setData(data);
-  }, []);
-
+      }else if (selectedMapType === 'allClicks') {
+        const finalData = {
+          max: 1,
+          data: [
+            { x: 564, y: 292.8, value: 1 },
+            { x: 479, y: 431.6, value: 1 },
+            { x: 445, y: 226.6, value: 1 },
+            { x: 460, y: 139.6, value: 1 },
+            { x: 156, y: 210.6, value: 1 },
+          ],
+        };
+        addVisualization(heatmapContainerRef, 'heatmap' ,finalData);
+        setStyle({ position: 'relative', width: '700px' });
+      }
+    }, [selectedMapType]);
+  
   return (
     <div
-      className="bg-custom text-black relative m-10 pb-5 shadow-lg "
-      ref={heatmapContainerRef}
-      style={{ position: 'relative', width: '700px' }} // Set width to 600px
-      >
+    className="bg-custom text-black relative m-10 pb-5 shadow-lg"
+    ref={heatmapContainerRef}
+    style={style}
+  >
      <div className="bg-white text-black relative min-h-screen  rounded-lg">
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-6xl">
@@ -146,7 +131,8 @@ const ClickMap = () => {
       </div>
     </div>
     </div>
+
   );
 };
 
-export default ClickMap;
+export default Contact;

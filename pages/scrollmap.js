@@ -78,52 +78,100 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="bg-custom text-white relative">
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div>
-            <div className="bg-custom-back px-6 py-32 lg:px-8 sm-rounded-6xl lg-rounded-8xl">
-              <div className="mx-auto max-w-3xl text-base leading-7 text-white-700">
-                <p className="text-base font-semibold leading-7 text-indigo-600">About Me</p>
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-white-900 sm:text-4xl">
-                  My Journey to become a Front End Developer:
-                </h1>
-                <p className="mt-8">
-                  I&#39;m from Hyderabad, India. I finished my Computer Science degree back in 2018. During my final year in college, I really wanted to follow my passion for becoming a UI developer, so I joined a startup called Aquo Digital, which was into growth hacking and digital marketing.
-                </p>
-                <div className="mt-7 max-w-2xl">
-                  <p>
-                    Later on, with the same group of people, we started a SAAS company called{' '}
-                    <a
-                      href="https://greymetrics.com/"
-                      className="hover:text-blue-500 underline"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      GreyMetrics
-                    </a>
-                    . We eventually sold that company and then jumped into a new venture called{' '}
-                    <a
-                      href="https://www.videoform.com/"
-                      className="hover:text-blue-500 underline"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      VideoForm
-                    </a>
-                    . We managed to raise an initial seed fund of 100k for it.
-                  </p>
-                  <p className="mt-8">
-                    I&apos;ve been working with this awesome group for almost 4 years. It all began as an intern, and then I moved to working full time, learning and figuring out how to grow the company one day at a time.
-                  </p>
-                  <figure className="mt-16"></figure>
-                  <h2 className="mt-16 text-2xl font-bold tracking-tight text-white-900">As a developer</h2>
-                  <p className="mt-6">I pay close attention to my code’s readability.</p>
-                </div>
+    <div className="bg-white text-black relative min-h-screen  rounded-lg">
+    <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-wrap">
+          {/* Left Content */}
+          <div className="w-full lg:w-1/2 p-4">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Contact Us
+            </h1>
+            <p className="mt-8">
+              Welcome to PharmaCo, your trusted partner in healthcare. We are dedicated to providing the highest quality pharmaceutical products and services. If you have any questions or need assistance, please don't hesitate to reach out to us.
+            </p>
+            <p className="mt-4">
+              Address: 123 Pharma Street, Health City, Country
+            </p>
+            <p className="mt-4">
+              Phone: +123 456 7890
+            </p>
+            <p className="mt-4">
+              Email: contact@pharmaco.com
+            </p>
+          </div>
+          {/* Right Contact Form */}
+          <div className="w-full lg:w-1/2 p-4">
+            <form className="bg-gray-100 p-6 rounded-lg shadow-md">
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                  Name
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="name"
+                  type="text"
+                  placeholder="Your Name"
+                />
               </div>
-            </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                  Email
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="email"
+                  type="email"
+                  placeholder="Your Email"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+                  Message
+                </label>
+                <textarea
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="message"
+                  placeholder="Your Message"
+                  rows="5"
+                ></textarea>
+              </div>
+              <div className="flex items-center justify-between">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="button"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
           </div>
         </div>
+        {/* CTA Section */}
+        <div className="mt-16 bg-blue-500 text-white p-8 rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold tracking-tight">
+            Join Our Newsletter
+          </h2>
+          <p className="mt-4">
+            Stay updated with the latest news and offers from PharmaCo. Subscribe to our newsletter and never miss out!
+          </p>
+          <form className="mt-4">
+            <div className="flex">
+              <input
+                className="shadow appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="email"
+                placeholder="Your Email"
+              />
+              <button
+                className="bg-white text-blue-500 hover:bg-gray-200 font-bold py-2 px-4 rounded-r focus:outline-none focus:shadow-outline"
+                type="button"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
         {/* Heatmap Container */}
         <div
           ref={heatmapContainerRef}
