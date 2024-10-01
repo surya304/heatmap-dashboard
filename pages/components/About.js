@@ -1,32 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { addVisualization } from '../utils';
 
-const About = ({ selectedMapType }) => {
+const About = ({ selectedMapType,finalData}) => {
   const heatmapContainerRef = useRef(null);
   const [style, setStyle] = useState({});
 
+
   useEffect(() => {
+
+    
+    
     if (selectedMapType === 'scroll') {
-      const finalData={};
+      // const finalData=[22, 33, 44, 55];
       addVisualization(heatmapContainerRef, 'rectangle',finalData);
 
       setStyle({ position: 'relative' });
 
     }else if (selectedMapType === 'allClicks') {
-      const finalData = {
-        max: 1,
-        data: [
-          { x: 564, y: 292.8, value: 1 },
-          { x: 479, y: 431.6, value: 1 },
-          { x: 445, y: 226.6, value: 1 },
-          { x: 460, y: 139.6, value: 1 },
-          { x: 156, y: 210.6, value: 1 },
-        ],
-      };
+      // const finalData = {
+      //   max: 1,
+      //   data: [
+      //     { x: 564, y: 292.8, value: 1 },
+      //     { x: 479, y: 431.6, value: 1 },
+      //     { x: 445, y: 226.6, value: 1 },
+      //     { x: 460, y: 139.6, value: 1 },
+      //     { x: 156, y: 210.6, value: 1 },
+      //   ],
+      // };
       addVisualization(heatmapContainerRef, 'heatmap' ,finalData);
       setStyle({ position: 'relative', width: '700px' });
     }
-  }, [selectedMapType]);
+  }, [selectedMapType,finalData]);
 
 
   return (

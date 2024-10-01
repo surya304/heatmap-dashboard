@@ -1,13 +1,8 @@
-import { data } from 'autoprefixer';
 import * as d3 from 'd3';
 import h337 from 'heatmap.js';
 
 export const addVisualization = (containerRef, type,finalData) => {
     //clear previous visualization
-
-    console.log('finalData',finalData);
-    
-
     if (containerRef.current) {
       // Clear previous heatmap
       d3.select(containerRef.current).selectAll('canvas').remove();
@@ -17,8 +12,8 @@ export const addVisualization = (containerRef, type,finalData) => {
     
   if (type === 'rectangle') {
     // Set up the dimensions of the SVG
-    const width = window.innerWidth;
-    const height = document.body.scrollHeight;
+    const width = containerRef.current.offsetWidth;
+    const height = containerRef.current.offsetHeight;
 
     // Remove any previous SVG if it exists (for hot reloading purposes)
     d3.select(containerRef.current).selectAll('svg').remove();
@@ -37,9 +32,6 @@ export const addVisualization = (containerRef, type,finalData) => {
     // Define the colors for each quadrant
     const colors = ['red', 'green', 'blue', 'yellow'];
 
-    // Calculate the height of each quadrant
-    const quadrantHeight = height / 4;
-
     // Create a tooltip element
     const tooltip = d3
       .select(containerRef.current)
@@ -52,29 +44,33 @@ export const addVisualization = (containerRef, type,finalData) => {
       .style('pointer-events', 'none')
       .style('opacity', 0);
 
-    // Create the quadrants
-    for (let i = 0; i < 4; i++) {
+    // Create the quadrants based on the provided data array
+    let currentY = 0;
+    finalData.forEach((value, index) => {
+      const quadrantHeight = (value / 100) * height;
+
       svg
         .append('rect')
         .attr('x', 0)
-        .attr('y', i * quadrantHeight)
+        .attr('y', currentY)
         .attr('width', width)
         .attr('height', quadrantHeight)
-        .attr('fill', colors[i])
+        .attr('fill', colors[index % colors.length])
         .attr('opacity', 0.3); // Adjust opacity as needed
 
       // Add an invisible rectangle at the end of each quadrant for tooltip interaction
       svg
         .append('rect')
         .attr('x', 0)
-        .attr('y', (i + 1) * quadrantHeight - 5) // Position at the end of the quadrant
+        .attr('y', currentY + quadrantHeight - 5) // Position at the end of the quadrant
         .attr('width', width)
         .attr('height', 10) // Small height for interaction
         .attr('fill', 'transparent')
         .style('pointer-events', 'all'); // Enable pointer events
-    
-    }
-  } else if (type === 'heatmap') {
+
+      currentY += quadrantHeight;
+    });
+} else if (type === 'heatmap') {
     // Initialize heatmap instance
     const heatmapInstance = h337.create({
         container: containerRef.current,

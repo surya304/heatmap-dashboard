@@ -88,7 +88,7 @@ const AboutUs = () => {
               Contact Us
             </h1>
             <p className="mt-8">
-              Welcome to PharmaCo, your trusted partner in healthcare. We are dedicated to providing the highest quality pharmaceutical products and services. If you have any questions or need assistance, please don't hesitate to reach out to us.
+              Welcome to PharmaCo, your trusted partner in healthcare. We are dedicated to providing the highest quality pharmaceutical products and services. If you have any questions or need assistance, please dont hesitate to reach out to us.
             </p>
             <p className="mt-4">
               Address: 123 Pharma Street, Health City, Country

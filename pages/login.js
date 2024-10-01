@@ -86,7 +86,7 @@ export default function Login() {
         />
         <button className="bg-blue-500 text-white p-2 w-full">Login</button>
         <p className="mt-4">
-          Don't have an account?{' '}
+          Dont have an account?{' '}
           <a
             className="text-blue-500"
             onClick={() => router.push('/signup')}

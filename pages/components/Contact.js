@@ -1,32 +1,33 @@
 import React,{useEffect,useRef,useState} from 'react';
 import { addVisualization } from '../utils';
 
-const Contact = ({ selectedMapType }) => {
+const Contact = ({ selectedMapType, finalData }) => {
     const heatmapContainerRef = useRef(null);
     const [style, setStyle] = useState({});
+
+    
   
     useEffect(() => {
       if (selectedMapType === 'scroll') {
-        const finalData={};
         addVisualization(heatmapContainerRef, 'rectangle',finalData);
 
         setStyle({ position: 'relative' });
 
       }else if (selectedMapType === 'allClicks') {
-        const finalData = {
-          max: 1,
-          data: [
-            { x: 564, y: 292.8, value: 1 },
-            { x: 479, y: 431.6, value: 1 },
-            { x: 445, y: 226.6, value: 1 },
-            { x: 460, y: 139.6, value: 1 },
-            { x: 156, y: 210.6, value: 1 },
-          ],
-        };
+        // const finalData = {
+        //   max: 1,
+        //   data: [
+        //     { x: 564, y: 292.8, value: 1 },
+        //     { x: 479, y: 431.6, value: 1 },
+        //     { x: 445, y: 226.6, value: 1 },
+        //     { x: 460, y: 139.6, value: 1 },
+        //     { x: 156, y: 210.6, value: 1 },
+        //   ],
+        // };
         addVisualization(heatmapContainerRef, 'heatmap' ,finalData);
         setStyle({ position: 'relative', width: '700px' });
       }
-    }, [selectedMapType]);
+    }, [selectedMapType,finalData]);
   
   return (
     <div
@@ -44,7 +45,7 @@ const Contact = ({ selectedMapType }) => {
                 Contact Us
               </h1>
               <p className="mt-8">
-                Welcome to PharmaCo, your trusted partner in healthcare. We are dedicated to providing the highest quality pharmaceutical products and services. If you have any questions or need assistance, please don't hesitate to reach out to us.
+                Welcome to PharmaCo, your trusted partner in healthcare. We are dedicated to providing the highest quality pharmaceutical products and services. If you have any questions or need assistance, please dont hesitate to reach out to us.
               </p>
               <p className="mt-4">
                 Address: 123 Pharma Street, Health City, Country
