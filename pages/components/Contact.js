@@ -1,6 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react';
 
-import { addVisualization } from '../utils/utils';
+import { addVisualization } from '../../utils/heatmap';
 const Contact = ({ selectedMapType, finalData }) => {
     const heatmapContainerRef = useRef(null);
     const [style, setStyle] = useState({});
