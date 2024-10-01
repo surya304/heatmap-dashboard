@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { addVisualization } from '../utils';
+import { addVisualization } from '../utils/utils';
 
 const About = ({ selectedMapType,finalData}) => {
   const heatmapContainerRef = useRef(null);
