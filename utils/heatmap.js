@@ -32,18 +32,7 @@ export const addVisualization = (containerRef, type,finalData) => {
     // Define the colors for each quadrant
     const colors = ['red', 'green', 'blue', 'yellow'];
 
-    // Create a tooltip element
-    const tooltip = d3
-      .select(containerRef.current)
-      .append('div')
-      .style('position', 'absolute')
-      .style('background', 'rgba(0, 0, 0, 0.7)')
-      .style('color', 'white')
-      .style('padding', '5px 10px')
-      .style('border-radius', '4px')
-      .style('pointer-events', 'none')
-      .style('opacity', 0);
-
+   
     // Create the quadrants based on the provided data array
     let currentY = 0;
     finalData.forEach((value, index) => {

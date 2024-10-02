@@ -8,6 +8,13 @@ const Sidebar = ({ onSubmit }) => {
   const [timePeriod, setTimePeriod] = useState('lastDay');
 
   const handleSubmit = () => {
+    if (!selectedPage || !selectedMapType || !timePeriod) {
+      onSubmit({ error: 'Please select all options before submitting.' });
+      return;
+    }else{
+      onSubmit({ error: '' });
+    }
+  
     let finalData;
     console.log(timePeriod, 'timePeriod');
     

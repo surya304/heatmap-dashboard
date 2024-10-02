@@ -11,9 +11,16 @@ export default function Home() {
   const [error, setError] = useState('');
   const [sidebarData, setSidebarData] = useState({ selectedPage: '', selectedMapType: 'scroll', finalData: '' });
 
+
   const handleSidebarSubmit = (data) => {
-    console.log(data, 'handleSidebarSubmit');
+    if (data.error) {
+      setError(data.error);
+      return;
+    }else{
+      setError('');
+    }
     
+    console.log(data, 'handleSidebarSubmit');
     setSidebarData(data);
   };
 
@@ -24,6 +31,11 @@ export default function Home() {
         <Sidebar onSubmit={handleSidebarSubmit} />
         <div className="flex-1">
        
+        {error && (
+            <div className="fixed top-0 left-0 right-0 bg-red-500 text-white p-4">
+              {error}
+            </div>
+          )}
           
           
           {/* Conditionally render Contact or About component */}

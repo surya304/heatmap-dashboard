@@ -5,8 +5,6 @@ const Contact = ({ selectedMapType, finalData }) => {
     const heatmapContainerRef = useRef(null);
     const [style, setStyle] = useState({});
 
-    
-  
     useEffect(() => {
       if (selectedMapType === 'scroll') {
         addVisualization(heatmapContainerRef, 'rectangle',finalData);
