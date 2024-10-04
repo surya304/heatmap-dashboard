@@ -7,12 +7,12 @@ export default async function handler(req, res) {
   const session = await getSession({ req });
 
  
-  // Check if the user is authenticated and has the 'owner' role
-  if (!session || session.user.role !== 'owner') {
-    // If not, respond with a 403 Forbidden status
-    res.status(403).json({ message: 'Forbidden' });
-    return;
-  }
+  // // Check if the user is authenticated and has the 'owner' role
+  // if (!session || session.user.role !== 'owner') {
+  //   // If not, respond with a 403 Forbidden status
+  //   res.status(403).json({ message: 'Forbidden' });
+  //   return;
+  // }
 
   // Connect to MongoDB using the URI from environment variables
   const client = await MongoClient.connect(process.env.MONGODB_URI);
