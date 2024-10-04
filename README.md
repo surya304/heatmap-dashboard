@@ -2,15 +2,14 @@
 
 ## Overview
 
-The Heatmap Project is a web application designed to visualize user interactions on a webpage using heatmaps. It leverages Next.js for server-side rendering, MongoDB for data storage, and various other libraries for enhanced functionality.
+The
 
 ## Features
 
 - **User Authentication**: Secure user authentication using `next-auth`.
-- **Heatmap Visualization**: Display user interaction data using `heatmap.js`.
-- **Role-Based Access**: Different functionalities for users based on their roles (e.g., owner, admin).
-- **Responsive Design**: Mobile-friendly and responsive UI using Tailwind CSS.
-- **Data Management**: Efficient data handling with MongoDB and Mongoose.
+- **Heatmap Visualization**: Display user interaction data using `heatmap.js`and `d3.js`.
+- **Role-Based Access**: Different functionalities for users based on their roles (e.g., owner, team).
+
 
 ## Project Structure
 
